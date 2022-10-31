@@ -1,0 +1,72 @@
+body {
+    min-width: 250px;
+    max-width: 1000px;
+   
+    }
+.container {
+padding: 50px;
+margin: 50px;
+
+}
+
+header{
+    height: 100px;
+}
+
+.name{
+    color: white;
+    justify-content: center;
+    margin: 0px; 
+    padding-left: 280px;
+    padding-top: 30px;
+}
+img{
+    position:absolute;
+}
+
+    .flechas {
+        width: 40px;
+    }
+    .flechita {
+        width: 10px;
+        margin-top: 8px;
+    }
+    .emotes{
+        width: 20px;
+    }
+    .barra{
+        width:90px ;
+    }
+h5{
+    margin-left: 25px;
+}
+h9{
+    margin-left: 25px;
+}
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 250px;
+
+}
+
+.subtitulo{
+    color:gray;
+}
+
+    .bi-trophy {
+        font-size: 100px;
+    }
+
+    .bi-envelope {
+        font-size: 40px;
+        color: white;
+    }
+
+
+
+    .container {
+        margin: 10px 50px;
+        padding-right:10px;
+        padding-left: 0px;
+    }
