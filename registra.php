@@ -10,8 +10,7 @@
 
 <body>
     <div class="login-box">
-        <h1>CREA EL TEU PROPI CV</h1>
-        <h2>Registra't:</h2>
+        
         <div class="alerta">
             <?php
             if (isset($_GET['error'])) {
@@ -28,6 +27,8 @@
                 } }
             ?>
         </div>
+        <h1>CREA EL TEU PROPI CV</h1>
+        <h2>Registra't:</h2>
         <form method="POST" action="alta.php">
             <div class="user-box">
                 <input type="text" name="nom" required="">
@@ -50,9 +51,9 @@
                 <label>Contrasenya</label>
             </div>
             <div class="button-form">
-                <input type="submit" placeholder="registrar-me" name="register">
+                <input type="submit" placeholder="Envia" name="register">
 
-                <div id="register">
+                <div id="registre">
                     Ja tens un compte?
                     <a href="index.php">Incia sessió</a>
                 </div>
