@@ -1,4 +1,6 @@
 <?php
+require_once ('config.php');
+require_once ('database.php');
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
@@ -6,6 +8,10 @@ if (!isset($_SESSION['usuario'])) {
   exit;
 }else{
   $user = $_SESSION['usuario'];
+  $idiomas= SelectIdioma($conn,$user['id_user']);
+  $habilidad=SelectHabilidad($conn,$user['id_user']);
+  $informatica=SelectInformatica($conn,$user['id_user']);
+  $competencia=SelectCompetencia($conn,$user['id_user']);
 ?>
 
 
@@ -30,14 +36,15 @@ if (!isset($_SESSION['usuario'])) {
 <body>
   <!-- Page header-->
   <a class="logout" type="submit" href="logout.php">Cerrar Sesión</a>
+  <a class="logout" type="submit" href="habilidades.php">EDIT</a>
   <header class="bg-secondary">
-    <img src="chico-guapo1.jpg" class="rounded-circle" style="border:5px solid gray; width: 200px ; margin-top: 40px; margin-left: 50px;">
-    <h3 class="name"><?php echo $user['nom'] ?></h3>
+    <img src="https://api.multiavatar.com/<?php echo $user['nom'] ?>.png" class="rounded-circle" style="border:5px solid gray; width: 200px ; margin-top: 40px; margin-left: 50px;">
+    <h3 class="name"><?php echo $user['nom'] ?>&nbsp; <?php echo $user['cognom'] ?></h3>
 
 
   </header>
 
-  <!-- Perfil-->
+<!-- Perfil-->
   <!-- col 4 <- 2 veces -->
   <div id="formació">
     <div class="container">
@@ -49,7 +56,11 @@ if (!isset($_SESSION['usuario'])) {
             <hr>
             <div>
               <img src="contacto.png" class="emotes">
+<<<<<<< HEAD
               <h9><b><?php echo $user['nom']. $user['cognom'] ?></b></h9>
+=======
+              <h9><b><?php echo $user['nom']. $user['cognom'] ?></b></h9><br>
+>>>>>>> 1428174116d66172b5aee3909cb81f40047b01af
               <img src="hogar.png" class="emotes">
               <h9><b><?php echo $user['direccio'] ?></b></h9><br>
               <img src="llamada-telefonica.png" class="emotes">
@@ -74,43 +85,40 @@ if (!isset($_SESSION['usuario'])) {
             <h5>Idiomas</h5>
             <hr>
             <div class="row">
-              <div class="col-lg-8">
-                <h7>Disciplinado</h7>
-                <h7>Liderazgo</h7>
-                <h7>Visionario</h7>
-                <h7>Habilidad numérica</h7>
-                <h7>Relaciones públicas</h7>
-              </div>
-              <div class="col-lg-4">
-                <img src="barra1.png" class="barra"> <br>
-                <img src="barra1.png" class="barra"> <br>
-                <img src="barra1.png" class="barra"> <br>
-                <img src="barra2.png" class="barra"> <br>
-                <img src="barra3.png" class="barra"> <br>
-              </div>
-
+            <?php 
+              foreach ($idiomas as $idioma){
+                ?><div class=idioma_barra><?php echo "<p>".$idioma['tipo_idioma']."</p>";
+                ?>
+                <div class="barra">
+                  <div class="porcentaje" style="width:<?php echo $idioma['porcentaje'] ?>%;">
+                  </div>
+                </div>
+            </div>
+              <?php
+              }
+              ?>
             </div>
           </div>
+        
           <br>
           <div class="row">
             <img src="flechas.png" class="flechas">
             <h5>Habilidades</h5>
             <hr>
             <div class="row">
-              <div class="col-lg-8">
-                <h7>Español</h7> <br>
-                <h7>Inglés</h7> <br>
-                <h7>Francés</h7> <br>
-                <h7>Portugués</h7>
-              </div>
-              <div class="col-lg-4">
-                <img src="barra2.png" class="barra"> <br>
-                <img src="barra1.png" class="barra"> <br>
-                <img src="barra1.png" class="barra"> <br>
-                <img src="barra2.png" class="barra"> <br>
-              </div>
-
+            <?php 
+              foreach ($habilidad as $hab){
+                ?><div class=idioma_barra><?php echo "<p>".$hab['habilidad']."</p>";
+                ?>
+                <div class="barra">
+                  <div class="porcentaje" style="width:<?php echo $hab['porcentaje'] ?>%;">
+                  </div>
+                </div>
             </div>
+              <?php
+              }
+              ?>
+          </div>
           </div>
           <br>
           <div class="row">
@@ -118,20 +126,18 @@ if (!isset($_SESSION['usuario'])) {
             <h5>Informática</h5>
             <hr>
             <div class="row">
-              <div class="col-lg-8">
-                <h7>Microsoft Excel</h7>
-                <h7>Microsoft Word</h7>
-                <h7>Software DelBol</h7>
-                <h7>Contalux</h7> <br>
-                <h7>Cegit</h7>
-              </div>
-              <div class="col-lg-4">
-                <img src="barra2.png" class="barra"> <br>
-                <img src="barra1.png" class="barra"> <br>
-                <img src="barra3.png" class="barra"> <br>
-                <img src="barra2.png" class="barra"> <br>
-                <img src="barra3.png" class="barra"> <br>
-              </div>
+            <?php 
+              foreach ($informatica as $info){
+                ?><div class=idioma_barra><?php echo "<p>".$info['informatica']."</p>";
+                ?>
+                <div class="barra">
+                  <div class="porcentaje" style="width:<?php echo $info['porcentaje'] ?>%;">
+                  </div>
+                </div>
+            </div>
+              <?php
+              }
+              ?> 
             </div>
           </div>
           <br>
@@ -141,17 +147,20 @@ if (!isset($_SESSION['usuario'])) {
             <hr>
             <div class="row">
               <div>
-                <img src="flechita.png" class="flechita">
-                <h9> Comunicación </h9><br>
-                <img src="flechita.png" class="flechita">
-                <h9> Trabajo en equipo </h9><br>
-              </div>
+              <?php 
+              foreach ($competencia as $compe){
+                ?><div class=idioma_barra><?php echo "<p>".$compe['competencia']."</p>";
+                ?>
+                </div>
+              <?php
+              }
+              ?>
             </div>
             <br>
 
           </div>
         </div>
-
+      </div>
         <div class="col-lg-8">
           <div class="row">
             <div class="row">

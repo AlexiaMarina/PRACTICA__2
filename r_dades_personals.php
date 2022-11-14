@@ -15,7 +15,11 @@
 
         <form method="POST" action="alta.php">
             <div class="user-box">
+<<<<<<< HEAD
                 <input type="text" name="Direcció" required="">
+=======
+                <input type="text" name="direccio" required="">
+>>>>>>> 1428174116d66172b5aee3909cb81f40047b01af
                 <label>Direcció</label>
             </div>
             <div class="user-box">

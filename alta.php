@@ -11,7 +11,11 @@ $email = (isset($_POST['email'])) ? $_POST['email'] : "";
 $user = (isset($_POST['user'])) ? $_POST['user'] : "";
 $passwd = (isset($_POST['passwd'])) ? $_POST['passwd'] : "";
 
+<<<<<<< HEAD
 $direcció = (isset($_POST['direcció'])) ? $_POST['direcció'] : "";
+=======
+$direccio = (isset($_POST['direccio'])) ? $_POST['direccio'] : "";
+>>>>>>> 1428174116d66172b5aee3909cb81f40047b01af
 $telefon_fix = (isset($_POST['telefon_fix'])) ? $_POST['telefon_fix'] : "";
 $data_naixement = (isset($_POST['data_naixement'])) ? $_POST['data_naixement'] : "";
 $nacionalitat = (isset($_POST['nacionalitat'])) ? $_POST['nacionalitat'] : "";
@@ -19,6 +23,19 @@ $telefon_movil = (isset($_POST['telefon_movil'])) ? $_POST['telefon_movil'] : ""
 $estat_civil = (isset($_POST['estat_civil'])) ? $_POST['estat_civil'] : "";
 $carnet_cotxe = (isset($_POST['carnet_cotxe'])) ? $_POST['carnet_cotxe'] : "";
 
+<<<<<<< HEAD
+=======
+$idiomas = (isset($_POST['idiomas'])) ? $_POST['idiomas'] : "";
+$tipo_idioma = (isset($_POST['tipo_idioma'])) ? $_POST['tipo_idioma'] : "";
+
+$habilidad = (isset($_POST['habilidad'])) ? $_POST['habilidad'] : "";
+
+$informatica = (isset($_POST['informatica'])) ? $_POST['informatica'] : "";
+
+$competencia = (isset($_POST['competencia'])) ? $_POST['competencia'] : "";
+
+
+>>>>>>> 1428174116d66172b5aee3909cb81f40047b01af
 // ver si algun campo está  vacío
 if (isset($_POST['register'])){
         if (empty($nom) || empty($cognom) || empty($email) || empty($user) || empty($passwd)) {
@@ -38,7 +55,11 @@ if (isset($_POST['register'])){
         }
     }
     if (isset($_POST['register2'])){
+<<<<<<< HEAD
         if (empty($direcció) || empty($telefon_fix) || empty($data_naixement) || empty($nacionalitat) || empty($telefon_movil)|| empty($estat_civil)|| empty($carnet_cotxe)) {
+=======
+        if ( empty($direccio) || empty($telefon_fix) || empty($data_naixement) || empty($nacionalitat) || empty($telefon_movil)|| empty($estat_civil)|| empty($carnet_cotxe)) {
+>>>>>>> 1428174116d66172b5aee3909cb81f40047b01af
             header("Location: r_dades_personals.php?error=2");
             exit;
         }
@@ -47,12 +68,92 @@ if (isset($_POST['register'])){
             $cognom=$_SESSION['register'][1];
             $email=$_SESSION['register'][2];
             $passwd=$_SESSION['register'][4];
+<<<<<<< HEAD
             $newUser = createOneUser($conn, $user, $passwd, $nom, $cognom, $email, $direcció, $telefon_fix, $data_naixement, $nacionalitat, $telefon_movil, $estat_civil, $carnet_cotxe);
             $_SESSION['usuario']=$newUser;
             header("Location: cv.php");
         }
         exit;
     }
+=======
+            $nom=$_SESSION['register'][0];
+            $newUser = createOneUser($conn, $user, $passwd, $nom, $cognom, $email, $direccio, $telefon_fix, $data_naixement, $nacionalitat, $telefon_movil, $estat_civil, $carnet_cotxe);
+            $_SESSION['usuario']=$newUser;
+            $_SESSION['usuario']['id_user']=$newUser['id_user'];
+            header("Location: habilidades.php");
+        }
+        exit;
+    }
+    if (isset($_POST['register3'])){
+        if ( empty($idiomas) ) {
+            header("Location: habilidades.php?error=2");
+            exit;
+        }
+        else{
+            $idiomas = $_POST['idiomas'];
+            $porcentaje = $_POST['porcentaje'];
+
+            $habilidad=$_POST['habilidad'];
+            $porcentaje =$_POST ['porcentaje'];
+
+            $id_user=$_SESSION['usuario']['id_user'];
+
+            $NewIdioma = createOneIdioma($conn, $idiomas, $id_user,$porcentaje);
+            
+            header("Location: habilidades.php");
+        }
+        exit;
+    }
+    if (isset($_POST['register4'])){
+        if ( empty($habilidad) ) {
+            header("Location: habilidades.php?error=2");
+            exit;
+        }
+        else{
+
+            $habilidad=$_POST['habilidad'];
+            $porcentaje =$_POST ['porcentaje'];
+            $id_user=$_SESSION['usuario']['id_user'];
+            $NewHabilidad = createOneHabilidad($conn, $habilidad, $id_user,$porcentaje);
+
+            header("Location: habilidades.php");
+        }
+        exit;
+    }
+    if (isset($_POST['register5'])){
+        if ( empty($informatica) ) {
+            header("Location: habilidades.php?error=2");
+            exit;
+        }
+        else{
+
+            $informatica=$_POST['informatica'];
+            $porcentaje =$_POST ['porcentaje'];
+            $id_user=$_SESSION['usuario']['id_user'];
+            $NewInformatica = createOneInformatica($conn, $informatica, $id_user,$porcentaje);
+
+            header("Location: habilidades.php");
+        }
+        exit;
+    }
+    if (isset($_POST['register6'])){
+        if ( empty($competencia) ) {
+            header("Location: habilidades.php?error=2");
+            exit;
+        }
+        else{
+
+            $competencia=$_POST['competencia'];
+            $id_user=$_SESSION['usuario']['id_user'];
+            $NewCompetencia = createOneCompetencia($conn, $competencia, $id_user);
+
+            header("Location: habilidades.php");
+        }
+        exit;
+    }
+
+
+>>>>>>> 1428174116d66172b5aee3909cb81f40047b01af
 
 
 ?>
