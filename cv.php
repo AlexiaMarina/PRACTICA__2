@@ -49,23 +49,23 @@ if (!isset($_SESSION['usuario'])) {
             <hr>
             <div>
               <img src="contacto.png" class="emotes">
-              <h9><b><?php echo $user['nom'] ?><br><?php echo $user['cognom'] ?></b></h9> <br>
+              <h9><b><?php echo $user['nom']. $user['cognom'] ?></b></h9>
               <img src="hogar.png" class="emotes">
-              <h9><b>Calle 24 5632, City Bell, La Plata</b></h9><br>
+              <h9><b><?php echo $user['direccio'] ?></b></h9><br>
               <img src="llamada-telefonica.png" class="emotes">
-              <h9><b>1234 56789</b></h9><br>
+              <h9><b><?php echo $user['telefon_fix'] ?></b></h9><br>
               <img src="arroba.png" class="emotes">
               <h9><b><?php echo $user['email'] ?></b></h9><br>
               <img src="calendario.png" class="emotes">
-              <h9><b>04/01/1995</b></h9><br>
+              <h9><b><?php echo $user['data_naixement'] ?></b></h9><br>
               <img src="bandera.png" class="emotes">
-              <h9><b>Argentina</b></h9><br>
+              <h9><b><?php echo $user['nacionalitat'] ?></b></h9><br>
               <img src="telefono-movil.png" class="emotes">
-              <h9><b>9376 5432</b></h9><br>
+              <h9><b><?php echo $user['telefon_movil'] ?></b></h9><br>
               <img src="signo-wc.png" class="emotes">
-              <h9><b>Soltero</b></h9><br>
+              <h9><b><?php echo $user['estat_civil'] ?></b></h9><br>
               <img src="coche.png" class="emotes">
-              <h9><b>Clase C</b></h9>
+              <h9><b><?php echo $user['carnet_cotxe'] ?></b></h9>
             </div>
           </div>
           <br>

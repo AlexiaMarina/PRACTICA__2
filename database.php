@@ -12,16 +12,20 @@ function searchUser($conn, $user)
 
 
 
-function createOneUser($conn, $user, $password, $nom, $cognom, $email)
+function createOneUser($conn, $user, $password, $nom, $cognom, $email, $direcció, $telefon_fix, $data_naixement, $nacionalitat, $telefon_movil, $estat_civil, $carnet_cotxe )
 {
     $passwordHashed = hashPassword($password);
-    $query = "INSERT INTO usuari (user, passwd, nom, cognom, email) VALUES ('$user', '$passwordHashed', '$nom', '$cognom', '$email' )";
+    $query = "INSERT INTO usuari (user, passwd, nom, cognom, email, direcció, telefon_fix, data_naixement, nacionalitat, telefon_movil, estat_civil, carnet_cotxe) VALUES ('$user', '$passwordHashed', '$nom', '$cognom', '$email','$direcció', '$telefon_fix', '$data_naixement', '$nacionalitat', '$telefon_movil', '$estat_civil', '$carnet_cotxe' )";
     $result = $conn->query($query);
     if ($result) {
         return searchUser($conn, $user);
     }
     return false;
 }
+
+
+
+
 
 
 
